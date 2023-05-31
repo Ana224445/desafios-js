@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Preço mudou </title>
+    <style>
+        body {
+            font: 12pt Arial;
+        }
+
+        button {
+            font-size: 12pt;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Preço mudou </h1>
+    <button onclick="verificar()"> Verificar </button>
+    <section id="resultado">
+        <p> Clique no botão acima para analisar a mudança de preço. </p>
+    </section>
+    <script>
+        function verificar() {
+            let velho = window.prompt('Qual era o preço anterior do produto?')
+            let atual = window.prompt('Qual é o preço atual do produto?')
+            let resp = window.document.getElementById('resultado')
+            resp.innerHTML += `<h3> Analisando os valores informados </h3>`
+            resp.innerHTML += `<p> O produto custava R$ ${velho} e agora custa R$ ${atual}. </p>`
+
+            if (velho > atual) {
+                let caiu = atual - velho
+                let percen1 = (velho / caiu) * 100
+                resp.innerHTML += `<p> Hoje o produto está mais barato. </p>`
+                resp.innerHTML += `<p> O preço caiu R$ ${caiu} em relação ao preço anterior.</p>`
+                resp.innerHTML += `<p> Uma variação de R$ ${percen1}% para baixo. </p>`
+
+            } else if (velho < atual) {
+                let subiu = atual - velho
+                let percen = (velho / subiu) * 100
+                resp.innerHTML += `<p> Hoje o produto está mais caro. </p>`
+                resp.innerHTML += `<p> O preço subiu R$ ${subiu} em relação ao preço anterior. </p>`
+                resp.innerHTML += `<p> Uma variação de ${percen}% para cima.`
+            } else if (velho == atual) {
+                resp.innerHTML += `<p O produto continua com o mesmo preço </p>`
+            }
+
+
+        }
+    </script>
+    <script src="precomudou.js"></script>
+</body>
+
+</html>
